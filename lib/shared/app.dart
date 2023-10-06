@@ -1,3 +1,4 @@
+import 'package:diverzum_ambassador/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -24,7 +25,7 @@ class App extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
