@@ -23,6 +23,16 @@ class App extends StatelessWidget {
             borderSide: const BorderSide(color: AppColors.primaryColor),
             borderRadius: BorderRadius.circular(8),
           ),
+          hintStyle: const TextStyle(color: AppColors.textColor, fontSize: 14),
+        ),
+        filledButtonTheme: FilledButtonThemeData(
+          style: FilledButton.styleFrom(
+            backgroundColor: AppColors.primaryColor,
+            minimumSize: const Size.fromHeight(44),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
         ),
         useMaterial3: true,
       ),
