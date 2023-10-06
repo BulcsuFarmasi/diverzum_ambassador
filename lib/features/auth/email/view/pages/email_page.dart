@@ -14,14 +14,20 @@ class EmailPage extends StatefulWidget {
 class _EmailPageState extends State<EmailPage> {
   @override
   Widget build(BuildContext context) {
-    return const AuthScaffold(
+    return  AuthScaffold(
         body: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Lépj be vagy hozz létre fiókot',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: AppColors.titleColor),
         ),
+        const Text(
+          'Ha már rendelkezel Diverzum fiókkal, akkor most beléphetsz. Ha még nincs ilyen fiókod, akkor létrehozunk neked egyet.',
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: AppColors.textColor),
+        ),
+        const SizedBox(height: 16,),
+        TextFormField(),
       ],
     ));
   }

@@ -17,5 +17,6 @@ class AppColors {
 
   static const backgroundColor = Color(0xFFFFFFFF);
   static const titleColor = Color(0xFF252A2F);
+  static const borderColor = Color(0xFFE0E3E6);
   static const textColor = Color(0xFF929497);
 }
