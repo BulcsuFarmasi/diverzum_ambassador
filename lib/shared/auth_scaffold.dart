@@ -28,8 +28,8 @@ class AuthScaffold extends StatelessWidget {
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),
                   ),
-
                 ),
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 28),
                 child: body,
               ),
             ),

@@ -16,6 +16,6 @@ class AppColors {
   static const int _primaryColorPrimaryValue = 0xFFA659C7;
 
   static const backgroundColor = Color(0xFFFFFFFF);
-  static const titleColor = Color(0xFF000000);
+  static const titleColor = Color(0xFF252A2F);
   static const textColor = Color(0xFF929497);
 }
