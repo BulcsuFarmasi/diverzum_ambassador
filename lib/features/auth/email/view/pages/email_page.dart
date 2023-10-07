@@ -15,12 +15,12 @@ class EmailPage extends StatefulWidget {
 }
 
 class _EmailPageState extends State<EmailPage> {
-  
-  
+
+
   void _checkEmail () {
     Navigator.of(context).pushNamed(PasswordPage.routeName);
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return AuthScaffold(
@@ -49,7 +49,7 @@ class _EmailPageState extends State<EmailPage> {
             TextFormField(
               decoration: const InputDecoration(
                 hintText: 'E-mail cím',
-                prefix: FaIcon(FontAwesomeIcons.envelope),
+                prefix: FaIcon(FontAwesomeIcons.envelope, size: 14,),
               ),
             ),
             const SizedBox(
