@@ -2,7 +2,7 @@ import 'package:diverzum_ambassador/features/auth/password/controller/password_p
 import 'package:diverzum_ambassador/features/auth/password/model/password_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final StateNotifierProvider<PasswordPageStateNotifier, PasswordPageState> passwordPageStateProvider =
+final StateNotifierProvider<PasswordPageStateNotifier, PasswordPageState> passwordPageStateNotifierProvider =
     StateNotifierProvider<PasswordPageStateNotifier, PasswordPageState>(
   (Ref ref) => PasswordPageStateNotifier(ref.read(passwordRepositoryProvider)),
 );
