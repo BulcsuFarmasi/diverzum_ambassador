@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Diverzum Ambassador',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
         inputDecorationTheme: InputDecorationTheme(
@@ -34,6 +34,7 @@ class App extends StatelessWidget {
             ),
           ),
         ),
+        fontFamily: 'Poppins',
         useMaterial3: true,
       ),
       initialRoute: '/',

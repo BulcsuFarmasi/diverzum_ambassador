@@ -7,10 +7,16 @@ final Provider<AuthService> authServiceProvider =
 
 class AuthService {
   final AuthRemote _authRemote;
+  String? _email;
 
   AuthService(this._authRemote);
 
   Future<AuthHandlerResponse> checkEmail(String email) async {
-    return _authRemote.checkEmail(email);
+    _email = email;
+    return _authRemote.checkEmail(_email!);
+  }
+
+  Future<void> logIn(String password) async {
+    _authRemote.logIn(_email!, password);
   }
 }
