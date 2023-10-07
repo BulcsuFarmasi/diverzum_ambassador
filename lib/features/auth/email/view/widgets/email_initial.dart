@@ -68,6 +68,7 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
                   size: 14,
                 ),
               ),
+              keyboardType: TextInputType.emailAddress,
               onChanged: _changeEmail,
               initialValue: _email,
             ),
