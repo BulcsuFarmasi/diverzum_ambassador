@@ -1,7 +1,7 @@
 import 'package:diverzum_ambassador/features/ambassador/ambassador/view/pages/ambassador_page.dart';
 import 'package:diverzum_ambassador/features/auth/email/view/pages/email_page.dart';
 import 'package:diverzum_ambassador/features/auth/password/view/pages/password_page.dart';
-import 'package:diverzum_ambassador/shared/app_colors.dart';
+import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {

@@ -12,7 +12,7 @@ class PasswordRepository {
 
   final AuthService _authService;
 
-  Future<void> logIn(String password) async {
-    _authService.logIn(password);
+  Future<void> login(String password) async {
+    _authService.login(password);
   }
 }

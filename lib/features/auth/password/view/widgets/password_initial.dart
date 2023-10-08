@@ -1,10 +1,10 @@
 
 
 import 'package:diverzum_ambassador/features/auth/password/controller/password_page_state_notifier.dart';
-import 'package:diverzum_ambassador/shared/app_colors.dart';
+import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
 import 'package:diverzum_ambassador/shared/auth_scaffold.dart';
-import 'package:diverzum_ambassador/shared/custom_back_button.dart';
-import 'package:diverzum_ambassador/shared/text_field_label.dart';
+import 'package:diverzum_ambassador/shared/widgets/custom_back_button.dart';
+import 'package:diverzum_ambassador/shared/widgets/text_field_label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -31,8 +31,8 @@ class _PasswordInitialState extends ConsumerState<PasswordInitial> {
     _password = newPassword;
   }
 
-  void _logIn() {
-    ref.read(passwordPageStateNotifierProvider.notifier).logIn(_password!);
+  void _login() {
+    ref.read(passwordPageStateNotifierProvider.notifier).login(_password!);
   }
 
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _PasswordInitialState extends ConsumerState<PasswordInitial> {
               height: 16,
             ),
             FilledButton(
-              onPressed: _logIn,
+              onPressed: _login,
               child: const Text(
                 'Belépés',
               ),

@@ -1,5 +1,5 @@
 import 'package:diverzum_ambassador/features/auth/data/auth_handler_response.dart';
-import 'package:diverzum_ambassador/features/auth/data/log_in_response.dart';
+import 'package:diverzum_ambassador/features/auth/data/login_response.dart';
 import 'package:diverzum_ambassador/features/auth/services/auth_remote.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,8 +20,8 @@ class AuthService {
     return _authRemote.checkEmail(_email!);
   }
 
-  Future<void> logIn(String password) async {
-    LogInResponse logInResponse = await _authRemote.logIn(_email!, password);
-    _token = logInResponse.access_token;
+  Future<void> login(String password) async {
+    LoginResponse loginResponse = await _authRemote.login(_email!, password);
+    _token = loginResponse.access_token;
   }
 }

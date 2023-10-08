@@ -12,8 +12,8 @@ class PasswordPageStateNotifier extends StateNotifier<PasswordPageState> {
 
   final PasswordRepository _passwordRepository;
 
-  Future<void> logIn (String password) async {
-    await _passwordRepository.logIn(password);
+  Future<void> login (String password) async {
+    await _passwordRepository.login(password);
     state = const PasswordPageState.success();
   }
 }

@@ -1,4 +1,4 @@
-import 'package:diverzum_ambassador/shared/app.dart';
+import 'package:diverzum_ambassador/shared/widgets/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

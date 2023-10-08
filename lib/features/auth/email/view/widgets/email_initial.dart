@@ -1,8 +1,8 @@
 import 'package:diverzum_ambassador/features/auth/email/controller/email_page_state_notifier.dart';
 import 'package:diverzum_ambassador/features/auth/password/view/pages/password_page.dart';
-import 'package:diverzum_ambassador/shared/app_colors.dart';
+import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
 import 'package:diverzum_ambassador/shared/auth_scaffold.dart';
-import 'package:diverzum_ambassador/shared/text_field_label.dart';
+import 'package:diverzum_ambassador/shared/widgets/text_field_label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
