@@ -1,7 +1,7 @@
 import 'package:diverzum_ambassador/features/ambassador/ambassador/view/pages/ambassador_page.dart';
 import 'package:diverzum_ambassador/features/auth/email/view/pages/email_page.dart';
 import 'package:diverzum_ambassador/features/auth/password/view/pages/password_page.dart';
-import 'package:diverzum_ambassador/shared/app_colors.dart';
+import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Diverzum Ambassador',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
         inputDecorationTheme: InputDecorationTheme(
@@ -34,6 +34,7 @@ class App extends StatelessWidget {
             ),
           ),
         ),
+        fontFamily: 'Poppins',
         useMaterial3: true,
       ),
       initialRoute: '/',
