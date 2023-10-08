@@ -2,7 +2,7 @@
 
 import 'package:diverzum_ambassador/features/auth/password/controller/password_page_state_notifier.dart';
 import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
-import 'package:diverzum_ambassador/shared/auth_scaffold.dart';
+import 'package:diverzum_ambassador/shared/widgets/auth_scaffold.dart';
 import 'package:diverzum_ambassador/shared/widgets/custom_back_button.dart';
 import 'package:diverzum_ambassador/shared/widgets/text_field_label.dart';
 import 'package:flutter/material.dart';

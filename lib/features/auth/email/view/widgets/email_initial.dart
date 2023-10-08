@@ -1,7 +1,6 @@
 import 'package:diverzum_ambassador/features/auth/email/controller/email_page_state_notifier.dart';
-import 'package:diverzum_ambassador/features/auth/password/view/pages/password_page.dart';
 import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
-import 'package:diverzum_ambassador/shared/auth_scaffold.dart';
+import 'package:diverzum_ambassador/shared/widgets/auth_scaffold.dart';
 import 'package:diverzum_ambassador/shared/widgets/text_field_label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,7 +16,6 @@ class EmailInitial extends ConsumerStatefulWidget {
 }
 
 class _EmailInitialState extends ConsumerState<EmailInitial> {
-
   String? _email;
 
   void _checkEmail() {
@@ -27,7 +25,6 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
   void _changeEmail(String? newEmail) {
     _email = newEmail;
   }
-
 
   @override
   void initState() {
