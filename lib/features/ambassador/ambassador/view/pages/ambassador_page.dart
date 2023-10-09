@@ -3,6 +3,7 @@ import 'package:diverzum_ambassador/features/ambassador/ambassador/controller/am
 import 'package:diverzum_ambassador/features/ambassador/ambassador/view/widgets/ambassador_page_load_success.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AmbassadorPage extends ConsumerStatefulWidget {
   const AmbassadorPage({super.key});
@@ -27,7 +28,36 @@ class _AmbassadorPageState extends ConsumerState<AmbassadorPage> {
     final AmbassadorPageState ambassadorPageState = ref.watch(ambassadorPageStateNotifier);
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(leading: ,),
+        appBar: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Image.asset('assets/images/diverzum_logo.png'),
+          ),
+          leadingWidth: 158,
+          actions: [
+            const FaIcon(
+              FontAwesomeIcons.magnifyingGlass,
+              size: 16,
+            ),
+            const SizedBox(
+              width: 18,
+            ),
+            const FaIcon(
+              FontAwesomeIcons.bell,
+              size: 16,
+            ),
+            const SizedBox(
+              width: 18,
+            ),
+            Image.asset(
+              'assets/images/profile.png',
+              width: 32,
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+          ],
+        ),
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: switch (ambassadorPageState) {
