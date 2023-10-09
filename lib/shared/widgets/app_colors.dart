@@ -15,8 +15,10 @@ class AppColors {
   });
   static const int _primaryColorPrimaryValue = 0xFFA659C7;
 
-  static const backgroundColor = Color(0xFFFFFFFF);
+  static const authBackgroundColor = Color(0xFFFFFFFF);
   static const titleColor = Color(0xFF252A2F);
   static const borderColor = Color(0xFFE0E3E6);
   static const textColor = Color(0xFF929497);
+  static const backgroundColor = Color(0xFFF5F9FC);
+  static const tableOddRowColor = Color(0xFFF9F9F9);
 }

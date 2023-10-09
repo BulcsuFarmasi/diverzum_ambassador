@@ -35,6 +35,7 @@ class App extends StatelessWidget {
           ),
         ),
         fontFamily: 'Poppins',
+        scaffoldBackgroundColor: AppColors.backgroundColor,
         useMaterial3: true,
       ),
       initialRoute: '/',

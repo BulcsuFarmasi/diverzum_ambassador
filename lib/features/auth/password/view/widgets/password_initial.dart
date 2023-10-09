@@ -35,6 +35,7 @@ class _PasswordInitialState extends ConsumerState<PasswordInitial> {
     ref.read(passwordPageStateNotifierProvider.notifier).login(_password!);
   }
 
+  @override
   Widget build(BuildContext context) {
     return AuthScaffold(
       body: SingleChildScrollView(
