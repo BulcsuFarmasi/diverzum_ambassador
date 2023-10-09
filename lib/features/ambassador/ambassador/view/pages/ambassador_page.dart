@@ -25,17 +25,20 @@ class _AmbassadorPageState extends ConsumerState<AmbassadorPage> {
   @override
   Widget build(BuildContext context) {
     final AmbassadorPageState ambassadorPageState = ref.watch(ambassadorPageStateNotifier);
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: switch (ambassadorPageState) {
-          PageLoadSuccess pageLoadSuccess => AmbassadorPageLoadSuccess(
-              ambassadors: pageLoadSuccess.ambassadors,
-              currentPage: pageLoadSuccess.currentPage,
-              pageCount: pageLoadSuccess.pageCount,
-            ),
-          _ => const SizedBox()
-        },
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(leading: ,),
+        body: Padding(
+          padding: const EdgeInsets.all(20),
+          child: switch (ambassadorPageState) {
+            PageLoadSuccess pageLoadSuccess => AmbassadorPageLoadSuccess(
+                ambassadors: pageLoadSuccess.ambassadors,
+                currentPage: pageLoadSuccess.currentPage,
+                pageCount: pageLoadSuccess.pageCount,
+              ),
+            _ => const SizedBox()
+          },
+        ),
       ),
     );
   }

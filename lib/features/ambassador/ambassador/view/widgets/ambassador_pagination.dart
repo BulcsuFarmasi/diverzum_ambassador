@@ -33,26 +33,26 @@ class _AmbassadorPaginationState extends ConsumerState<AmbassadorPagination> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AmbassadorPaginationItem(
-          active: false,
           disabled: widget.currentPage == 1,
           page: widget.currentPage - 1,
+          first: true,
           text: '«',
           pageSelected: _changePage,
         ),
         for (int page in pages)
           AmbassadorPaginationItem(
             active: page == widget.currentPage,
-            disabled: false,
             page: page,
             text: '$page',
             pageSelected: _changePage,
           ),
         AmbassadorPaginationItem(
-          active: false,
           disabled: widget.currentPage == widget.pageCount,
           page: widget.currentPage + 1,
+          last: true,
           text: '»',
           pageSelected: _changePage,
         )

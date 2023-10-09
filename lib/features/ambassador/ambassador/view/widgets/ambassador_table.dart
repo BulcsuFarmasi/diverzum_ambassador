@@ -24,11 +24,15 @@ class AmbassadorTable extends StatelessWidget {
           .map(
             (Ambassador ambassador) => TableRow(
               decoration: BoxDecoration(
-                  color: ambassador.position == 1
-                      ? AppColors.primaryColor
-                      : ambassador.position % 2 == 1
-                          ? AppColors.tableOddRowColor
-                          : null),
+                color: ambassador.position == 1
+                    ? AppColors.primaryColor
+                    : ambassador.position % 2 == 1
+                        ? AppColors.tableOddRowColor
+                        : null,
+                boxShadow: ambassador.position == 1
+                    ? [const BoxShadow(color: AppColors.tableShadowColor, offset: Offset(0, 15), blurRadius: 11, spreadRadius: -6)]
+                    : null,
+              ),
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
