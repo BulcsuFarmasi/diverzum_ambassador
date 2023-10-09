@@ -14,8 +14,6 @@ class EmailPageStateNotifier extends StateNotifier<EmailPageState> {
   void checkEmail(String email) async {
       final emailExists = await _emailRepository.checkEmail(email);
 
-      if (emailExists) {
-        state = EmailPageState.success(email);
-      }
+      state = (emailExists) ? EmailPageState.success(email) : EmailPageState.error(email);
   }
 }

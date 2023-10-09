@@ -8,9 +8,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EmailInitial extends ConsumerStatefulWidget {
-  const EmailInitial({super.key, this.email});
+  const EmailInitial({super.key, this.email, this.emailNotExists});
 
   final String? email;
+  final bool? emailNotExists;
 
   @override
   ConsumerState<EmailInitial> createState() => _EmailInitialState();
@@ -21,36 +22,39 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
   bool _formValid = false;
 
   String? _email;
+  bool? _emailNotExists;
+
+  @override
+  void didUpdateWidget(covariant EmailInitial oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _email = widget.email;
+    _emailNotExists = widget.emailNotExists;
+  }
 
   void _checkEmail() {
     ref.read(emailPageStateProvider.notifier).checkEmail(_email!);
   }
 
   void _changeEmail(String? newEmail) {
+    _emailNotExists = null;
     setState(() {
-    _validateForm();
+      _validateForm();
       _email = newEmail;
     });
   }
 
-  String? _validateEmail (String? email) {
-      String? errorMessage;
-      if (AppValidators.required(email)) {
-        errorMessage = 'Kérjük adj meg egy e-mail címet';
-      } else if (AppValidators.email(email!)) {
-        errorMessage = 'Kérjük érvényes e-mailet adj meg.';
-      }
-      return errorMessage;
+  String? _validateEmail(String? email) {
+    String? errorMessage;
+    if (AppValidators.required(email)) {
+      errorMessage = 'Kérjük adj meg egy e-mail címet';
+    } else if (AppValidators.email(email!)) {
+      errorMessage = 'Kérjük érvényes e-mailet adj meg.';
+    }
+    return errorMessage;
   }
 
   void _validateForm() {
-      _formValid = _formKey.currentState!.validate();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _email = widget.email;
+    _formValid = _formKey.currentState!.validate();
   }
 
   @override
@@ -87,7 +91,12 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
                     FontAwesomeIcons.envelope,
                     size: 14,
                   ),
-                prefixIconColor:  (_email?.isNotEmpty ?? false) ? (!_formValid ? AppColors.errorColor : AppColors.primaryColor) : AppColors.textColor,
+                  errorText: _emailNotExists ?? false ? 'Az e-mail cím nem található' : null,
+                  prefixIconColor: (_email?.isNotEmpty ?? false)
+                      ? ((!_formValid || (_emailNotExists ?? false))
+                          ? AppColors.errorColor
+                          : AppColors.primaryColor)
+                      : AppColors.textColor,
                 ),
                 keyboardType: TextInputType.emailAddress,
                 onChanged: _changeEmail,
@@ -114,13 +123,13 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
                     children: [
                       TextSpan(
                         text: 'a szerződési feltételekről, ',
-                        style:
-                            TextStyle(fontSize: 14, color: AppColors.primaryColor, decoration: TextDecoration.underline),
+                        style: TextStyle(
+                            fontSize: 14, color: AppColors.primaryColor, decoration: TextDecoration.underline),
                       ),
                       TextSpan(
                         text: 'adatvédelmi irányelvekről',
-                        style:
-                            TextStyle(fontSize: 14, color: AppColors.primaryColor, decoration: TextDecoration.underline),
+                        style: TextStyle(
+                            fontSize: 14, color: AppColors.primaryColor, decoration: TextDecoration.underline),
                       )
                     ]),
               )
