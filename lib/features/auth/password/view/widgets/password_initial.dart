@@ -1,5 +1,5 @@
 import 'package:diverzum_ambassador/features/auth/password/controller/password_page_state_notifier.dart';
-import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
+import 'package:diverzum_ambassador/shared/app_colors.dart';
 import 'package:diverzum_ambassador/shared/widgets/auth_scaffold.dart';
 import 'package:diverzum_ambassador/shared/widgets/custom_back_button.dart';
 import 'package:diverzum_ambassador/shared/widgets/text_field_label.dart';
@@ -17,6 +17,7 @@ class PasswordInitial extends ConsumerStatefulWidget {
 class _PasswordInitialState extends ConsumerState<PasswordInitial> {
   String? _password;
   bool _passwordVisible = false;
+  bool _formValid = false;
 
   void _changePasswordVisibility() {
     setState(() {
@@ -83,8 +84,8 @@ class _PasswordInitialState extends ConsumerState<PasswordInitial> {
                     size: 14,
                   ),
                 ),
-                prefixIconColor: (_password?.isNotEmpty ?? false) ? AppColors.primaryColor : AppColors.textColor,
-                suffixIconColor: (_password?.isNotEmpty ?? false) ? AppColors.primaryColor : AppColors.textColor,
+                prefixIconColor: (_password?.isNotEmpty ?? false) ? (!_formValid ? AppColors.errorColor : AppColors.primaryColor) : AppColors.textColor,
+                suffixIconColor: (_password?.isNotEmpty ?? false) ? (!_formValid ? AppColors.errorColor : AppColors.primaryColor) : AppColors.textColor,
               ),
               onChanged: _changePassword,
             ),

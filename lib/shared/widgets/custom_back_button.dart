@@ -1,4 +1,4 @@
-import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
+import 'package:diverzum_ambassador/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
