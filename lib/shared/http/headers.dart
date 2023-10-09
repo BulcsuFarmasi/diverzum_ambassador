@@ -4,7 +4,7 @@ part 'headers.freezed.dart';
 part 'headers.g.dart';
 
 @freezed
-class Headers with _${
+class Headers with _$Headers{
   const factory Headers(String authorization) = _Headers;
 
   factory Headers.fromJson(Map<String, Object?> json) => _$HeadersFromJson(json);

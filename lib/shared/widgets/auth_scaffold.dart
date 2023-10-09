@@ -23,7 +23,7 @@ class AuthScaffold extends StatelessWidget {
               heightFactor: 0.65,
               child: Container(
                 decoration: const BoxDecoration(
-                  color: AppColors.backgroundColor,
+                  color: AppColors.authBackgroundColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),

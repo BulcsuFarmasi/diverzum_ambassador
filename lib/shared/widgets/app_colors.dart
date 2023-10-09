@@ -15,8 +15,19 @@ class AppColors {
   });
   static const int _primaryColorPrimaryValue = 0xFFA659C7;
 
-  static const backgroundColor = Color(0xFFFFFFFF);
+  static const authBackgroundColor = Color(0xFFFFFFFF);
   static const titleColor = Color(0xFF252A2F);
   static const borderColor = Color(0xFFE0E3E6);
   static const textColor = Color(0xFF929497);
+  static const backgroundColor = Color(0xFFF5F9FC);
+  static const tableOddRowColor = Color(0xFFF9F9F9);
+  static const paginationTextColor = Color(0xFF0D6EFD);
+  static const paginationActiveTextColor = Color(0xFFFFFFFF);
+  static const paginationDisabledTextColor = Color(0xBF212529);
+  static const paginationBackgroundColor = Color(0xFFFFFFFF);
+  static const paginationActiveBackgroundColor = Color(0xFF0D6EFD);
+  static const paginationDisabledBackgroundColor = Color(0xFFE9ECEF);
+  static const paginationBorderColor = Color(0xFFDEE2E6);
+  static const paginationActiveBorderColor = Color(0xFF0D6EFD);
+  static const tableShadowColor = Color(0xFF7A7A7D);
 }
