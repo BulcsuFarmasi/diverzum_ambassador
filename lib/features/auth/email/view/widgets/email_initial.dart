@@ -23,7 +23,9 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
   }
 
   void _changeEmail(String? newEmail) {
-    _email = newEmail;
+    setState(() {
+      _email = newEmail;
+    });
   }
 
   @override
@@ -58,12 +60,13 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
               height: 8,
             ),
             TextFormField(
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'E-mail cím',
-                prefix: FaIcon(
+                prefixIcon: const Icon(
                   FontAwesomeIcons.envelope,
                   size: 14,
                 ),
+              prefixIconColor: (_email?.isNotEmpty ?? false) ? AppColors.primaryColor : AppColors.textColor,
               ),
               keyboardType: TextInputType.emailAddress,
               onChanged: _changeEmail,

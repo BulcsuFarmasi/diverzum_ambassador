@@ -1,5 +1,3 @@
-
-
 import 'package:diverzum_ambassador/features/auth/password/controller/password_page_state_notifier.dart';
 import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
 import 'package:diverzum_ambassador/shared/widgets/auth_scaffold.dart';
@@ -17,7 +15,6 @@ class PasswordInitial extends ConsumerStatefulWidget {
 }
 
 class _PasswordInitialState extends ConsumerState<PasswordInitial> {
-
   String? _password;
   bool _passwordVisible = false;
 
@@ -28,7 +25,9 @@ class _PasswordInitialState extends ConsumerState<PasswordInitial> {
   }
 
   void _changePassword(String newPassword) {
-    _password = newPassword;
+    setState(() {
+      _password = newPassword;
+    });
   }
 
   void _login() {
@@ -73,11 +72,19 @@ class _PasswordInitialState extends ConsumerState<PasswordInitial> {
               obscureText: !_passwordVisible,
               decoration: InputDecoration(
                 hintText: 'Jelszó',
-                prefix: const FaIcon(FontAwesomeIcons.key, size: 14,),
-                suffix: IconButton(
-                  onPressed: _changePasswordVisibility,
-                  icon: FaIcon(_passwordVisible ? FontAwesomeIcons.eyeSlash : FontAwesomeIcons.eye, size: 14,),
+                prefixIcon: const Icon(
+                  FontAwesomeIcons.key,
+                  size: 14,
                 ),
+                suffixIcon: IconButton(
+                  onPressed: _changePasswordVisibility,
+                  icon: FaIcon(
+                    _passwordVisible ? FontAwesomeIcons.eyeSlash : FontAwesomeIcons.eye,
+                    size: 14,
+                  ),
+                ),
+                prefixIconColor: (_password?.isNotEmpty ?? false) ? AppColors.primaryColor : AppColors.textColor,
+                suffixIconColor: (_password?.isNotEmpty ?? false) ? AppColors.primaryColor : AppColors.textColor,
               ),
               onChanged: _changePassword,
             ),
