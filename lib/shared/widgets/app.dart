@@ -31,27 +31,27 @@ class App extends StatelessWidget {
         ),
         filledButtonTheme: FilledButtonThemeData(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.resolveWith(
-              (Set<MaterialState> states) =>
-                  states.contains(MaterialState.disabled) ? AppColors.disabledButtonColor : AppColors.primaryColor,
-            ),
-            textStyle: MaterialStateProperty.resolveWith(
-              (Set<MaterialState> states) => states.contains(MaterialState.disabled)
-                  ? const TextStyle(fontSize: 14, color: AppColors.disabbledButtonTextColor)
-                  : const TextStyle(fontSize: 14, color: AppColors.buttonTextColor),
-            ),
-            minimumSize: MaterialStateProperty.resolveWith((states) => const Size.fromHeight(44)),
-            shape: MaterialStateProperty.resolveWith(
-              (states) => RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+              backgroundColor: MaterialStateProperty.resolveWith(
+                (Set<MaterialState> states) =>
+                    states.contains(MaterialState.disabled) ? AppColors.disabledButtonColor : AppColors.primaryColor,
               ),
-            ),
-            side: MaterialStateProperty.resolveWith(
-                  (Set<MaterialState> states) => states.contains(MaterialState.disabled)
-                  ? const BorderSide(color: AppColors.disabbledButtonBorderColor)
-                  : BorderSide.none,
-            )
-          ),
+              textStyle: MaterialStateProperty.resolveWith(
+                (Set<MaterialState> states) => states.contains(MaterialState.disabled)
+                    ? const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.disabbledButtonTextColor)
+                    : const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.buttonTextColor),
+              ),
+              minimumSize: MaterialStateProperty.resolveWith((states) => const Size.fromHeight(44)),
+              shape: MaterialStateProperty.resolveWith(
+                (states) => RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              side: MaterialStateProperty.resolveWith(
+                (Set<MaterialState> states) => states.contains(MaterialState.disabled)
+                    ? const BorderSide(color: AppColors.disabbledButtonBorderColor)
+                    : BorderSide.none,
+              )),
         ),
         fontFamily: 'Poppins',
         scaffoldBackgroundColor: AppColors.backgroundColor,
