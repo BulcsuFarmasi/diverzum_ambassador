@@ -30,7 +30,7 @@ class EmailPage extends ConsumerWidget {
           Success success => EmailForm(
               email: success.email,
             ),
-          Error error => EmailForm(email: error.email, emailNotExists: true)
+          Error error => EmailForm(email: error.email, error: error.error)
         },
       ),
     );

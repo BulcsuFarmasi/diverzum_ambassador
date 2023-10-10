@@ -1,3 +1,4 @@
+import 'package:diverzum_ambassador/features/auth/data/email_error.dart';
 import 'package:diverzum_ambassador/features/auth/email/controller/email_page_state_notifier.dart';
 import 'package:diverzum_ambassador/shared/app_colors.dart';
 import 'package:diverzum_ambassador/shared/app_validators.dart';
@@ -8,10 +9,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EmailForm extends ConsumerStatefulWidget {
-  const EmailForm({super.key, this.email, this.emailNotExists});
+  const EmailForm({super.key, this.email, this.error});
 
   final String? email;
-  final bool? emailNotExists;
+  final EmailError? error;
 
   @override
   ConsumerState<EmailForm> createState() => _EmailFormState();
@@ -22,13 +23,19 @@ class _EmailFormState extends ConsumerState<EmailForm> {
   bool _formValid = false;
 
   String? _email;
-  bool? _emailNotExists;
+  EmailError? _error;
+
+  String? get _errorMessage => switch (_error) {
+        EmailError.emailNotFound => 'Az e-mail cím nem található',
+        EmailError.other => 'Hiba történt, kérjük próbálkozz később',
+        null => null,
+      };
 
   @override
   void didUpdateWidget(covariant EmailForm oldWidget) {
     super.didUpdateWidget(oldWidget);
     _email = widget.email;
-    _emailNotExists = widget.emailNotExists;
+    _error = widget.error;
   }
 
   void _checkEmail() {
@@ -36,7 +43,7 @@ class _EmailFormState extends ConsumerState<EmailForm> {
   }
 
   void _changeEmail(String? newEmail) {
-    _emailNotExists = null;
+    _error = null;
     setState(() {
       _validateForm();
       _email = newEmail;
@@ -89,9 +96,9 @@ class _EmailFormState extends ConsumerState<EmailForm> {
                   FontAwesomeIcons.envelope,
                   size: 14,
                 ),
-                errorText: _emailNotExists ?? false ? 'Az e-mail cím nem található' : null,
+                errorText: _error != null ? _errorMessage : null,
                 prefixIconColor: (_email?.isNotEmpty ?? false)
-                    ? ((!_formValid || (_emailNotExists ?? false)) ? AppColors.errorColor : AppColors.primaryColor)
+                    ? ((!_formValid || _error != null) ? AppColors.errorColor : AppColors.primaryColor)
                     : AppColors.textColor,
                 contentPadding: EdgeInsets.zero),
             keyboardType: TextInputType.emailAddress,
