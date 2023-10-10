@@ -1,7 +1,8 @@
 import 'package:diverzum_ambassador/features/ambassador/ambassador/view/pages/ambassador_page.dart';
 import 'package:diverzum_ambassador/features/auth/password/controller/password_page_state.dart';
 import 'package:diverzum_ambassador/features/auth/password/controller/password_page_state_notifier.dart';
-import 'package:diverzum_ambassador/features/auth/password/view/widgets/password_initial.dart';
+import 'package:diverzum_ambassador/features/auth/password/view/widgets/password_form.dart';
+import 'package:diverzum_ambassador/shared/widgets/auth_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,10 +25,14 @@ class PasswordPage extends ConsumerWidget {
       }
     });
     final PasswordPageState passwordPageState = ref.watch(passwordPageStateNotifierProvider);
-    return switch (passwordPageState) {
-      Initial() => const PasswordInitial(),
-      Error error => PasswordInitial(password: error.password, loginFailed: true),
-      _ => const SizedBox(),
-    };
+    return AuthScaffold(
+      body: SingleChildScrollView(
+        child: switch (passwordPageState) {
+          Initial() => const PasswordForm(),
+          Error error => PasswordForm(password: error.password, loginFailed: true),
+          _ => const SizedBox(),
+        },
+      ),
+    );
   }
 }

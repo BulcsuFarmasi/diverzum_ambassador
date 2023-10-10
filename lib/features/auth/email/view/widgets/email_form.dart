@@ -7,17 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class EmailInitial extends ConsumerStatefulWidget {
-  const EmailInitial({super.key, this.email, this.emailNotExists});
+class EmailForm extends ConsumerStatefulWidget {
+  const EmailForm({super.key, this.email, this.emailNotExists});
 
   final String? email;
   final bool? emailNotExists;
 
   @override
-  ConsumerState<EmailInitial> createState() => _EmailInitialState();
+  ConsumerState<EmailForm> createState() => _EmailFormState();
 }
 
-class _EmailInitialState extends ConsumerState<EmailInitial> {
+class _EmailFormState extends ConsumerState<EmailForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _formValid = false;
 
@@ -25,7 +25,7 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
   bool? _emailNotExists;
 
   @override
-  void didUpdateWidget(covariant EmailInitial oldWidget) {
+  void didUpdateWidget(covariant EmailForm oldWidget) {
     super.didUpdateWidget(oldWidget);
     _email = widget.email;
     _emailNotExists = widget.emailNotExists;
