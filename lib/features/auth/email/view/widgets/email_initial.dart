@@ -97,6 +97,7 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
                           ? AppColors.errorColor
                           : AppColors.primaryColor)
                       : AppColors.textColor,
+                  contentPadding: EdgeInsets.zero
                 ),
                 keyboardType: TextInputType.emailAddress,
                 onChanged: _changeEmail,

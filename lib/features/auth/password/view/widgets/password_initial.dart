@@ -127,6 +127,7 @@ class _PasswordInitialState extends ConsumerState<PasswordInitial> {
                       ? ((!_formValid || (_loginFailed ?? false)) ? AppColors.errorColor : AppColors.primaryColor)
                       : AppColors.textColor,
                   errorText: _loginFailed ?? false ? 'Az e-mail vagy a  jelszó nem jó' : null,
+                  contentPadding: EdgeInsets.zero,
                 ),
                 onChanged: _changePassword,
                 validator: _validatePassword,
