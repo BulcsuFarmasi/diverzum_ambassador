@@ -59,84 +59,75 @@ class _EmailFormState extends ConsumerState<EmailForm> {
 
   @override
   Widget build(BuildContext context) {
-    return AuthScaffold(
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Lépj be vagy hozz létre fiókot',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: AppColors.titleColor),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              const Text(
-                'Ha már rendelkezel Diverzum fiókkal, akkor most beléphetsz. Ha még nincs ilyen fiókod, akkor létrehozunk neked egyet.',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: AppColors.textColor),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              const TextFieldLabel(label: 'E-mail cím'),
-              const SizedBox(
-                height: 8,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'E-mail cím',
-                  prefixIcon: const Icon(
-                    FontAwesomeIcons.envelope,
-                    size: 14,
-                  ),
-                  errorText: _emailNotExists ?? false ? 'Az e-mail cím nem található' : null,
-                  prefixIconColor: (_email?.isNotEmpty ?? false)
-                      ? ((!_formValid || (_emailNotExists ?? false))
-                          ? AppColors.errorColor
-                          : AppColors.primaryColor)
-                      : AppColors.textColor,
-                  contentPadding: EdgeInsets.zero
-                ),
-                keyboardType: TextInputType.emailAddress,
-                onChanged: _changeEmail,
-                validator: _validateEmail,
-                initialValue: _email,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              FilledButton(
-                onPressed: _formValid ? _checkEmail : null,
-                child: const Text(
-                  'Folytatás',
-                ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              RichText(
-                text: const TextSpan(
-                    text:
-                        'Látogass el a diverzum adatvédelmi nyilatkozatára, hogy többet megtudj a személyes adatok feldolgozásáról ',
-                    style: TextStyle(fontSize: 14, color: AppColors.textColor),
-                    children: [
-                      TextSpan(
-                        text: 'a szerződési feltételekről, ',
-                        style: TextStyle(
-                            fontSize: 14, color: AppColors.primaryColor, decoration: TextDecoration.underline),
-                      ),
-                      TextSpan(
-                        text: 'adatvédelmi irányelvekről',
-                        style: TextStyle(
-                            fontSize: 14, color: AppColors.primaryColor, decoration: TextDecoration.underline),
-                      )
-                    ]),
-              )
-            ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Lépj be vagy hozz létre fiókot',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: AppColors.titleColor),
           ),
-        ),
+          const SizedBox(
+            height: 8,
+          ),
+          const Text(
+            'Ha már rendelkezel Diverzum fiókkal, akkor most beléphetsz. Ha még nincs ilyen fiókod, akkor létrehozunk neked egyet.',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: AppColors.textColor),
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          const TextFieldLabel(label: 'E-mail cím'),
+          const SizedBox(
+            height: 8,
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+                hintText: 'E-mail cím',
+                prefixIcon: const Icon(
+                  FontAwesomeIcons.envelope,
+                  size: 14,
+                ),
+                errorText: _emailNotExists ?? false ? 'Az e-mail cím nem található' : null,
+                prefixIconColor: (_email?.isNotEmpty ?? false)
+                    ? ((!_formValid || (_emailNotExists ?? false)) ? AppColors.errorColor : AppColors.primaryColor)
+                    : AppColors.textColor,
+                contentPadding: EdgeInsets.zero),
+            keyboardType: TextInputType.emailAddress,
+            onChanged: _changeEmail,
+            validator: _validateEmail,
+            initialValue: _email,
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          FilledButton(
+            onPressed: _formValid ? _checkEmail : null,
+            child: const Text(
+              'Folytatás',
+            ),
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          RichText(
+            text: const TextSpan(
+                text:
+                    'Látogass el a diverzum adatvédelmi nyilatkozatára, hogy többet megtudj a személyes adatok feldolgozásáról ',
+                style: TextStyle(fontSize: 14, color: AppColors.textColor),
+                children: [
+                  TextSpan(
+                    text: 'a szerződési feltételekről, ',
+                    style: TextStyle(fontSize: 14, color: AppColors.primaryColor, decoration: TextDecoration.underline),
+                  ),
+                  TextSpan(
+                    text: 'adatvédelmi irányelvekről',
+                    style: TextStyle(fontSize: 14, color: AppColors.primaryColor, decoration: TextDecoration.underline),
+                  )
+                ]),
+          )
+        ],
       ),
     );
   }

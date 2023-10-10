@@ -16,7 +16,7 @@ class AmbassadorTable extends StatelessWidget {
 
     return Table(
       columnWidths: const {
-        0: FixedColumnWidth(80),
+        0: FixedColumnWidth(50),
         1: FlexColumnWidth(),
         2: FixedColumnWidth(48),
       },
@@ -35,7 +35,7 @@ class AmbassadorTable extends StatelessWidget {
               ),
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   child: Text(
                     '${ambassador.position}',
                     style: ambassador.position == 1 ? tableTextStyleBoldFirst : tableTextStyleBold,
