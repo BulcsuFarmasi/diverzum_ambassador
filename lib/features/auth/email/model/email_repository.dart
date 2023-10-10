@@ -1,4 +1,4 @@
-import 'package:diverzum_ambassador/features/auth/data/auth_handler_response.dart';
+import 'package:diverzum_ambassador/features/auth/data/auth_handler_response_body.dart';
 import 'package:diverzum_ambassador/features/auth/services/auth_service.dart';
 import 'package:diverzum_ambassador/shared/http/network_excpetion.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,9 +17,9 @@ class EmailRepository {
   Future<bool> checkEmail(String email) async {
     try {
 
-    final AuthHandlerResponse authHandlerResponse = await _authService.checkEmail(email);
+    final AuthHandlerResponseBody authHandlerResponseBody = await _authService.checkEmail(email);
 
-    return authHandlerResponse.status == login;
+    return authHandlerResponseBody.status == login;
     } on NetworkException {
       rethrow;
     }

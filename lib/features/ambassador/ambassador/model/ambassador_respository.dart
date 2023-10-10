@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:diverzum_ambassador/features/ambassador/data/ambassador.dart';
-import 'package:diverzum_ambassador/features/ambassador/data/ambassador_response.dart';
+import 'package:diverzum_ambassador/features/ambassador/data/ambassador_response_body.dart';
 import 'package:diverzum_ambassador/features/ambassador/data/remote_ambassador.dart';
 import 'package:diverzum_ambassador/features/ambassador/services/ambassador_service.dart';
 import 'package:diverzum_ambassador/features/auth/services/auth_service.dart';
@@ -45,8 +45,8 @@ class AmbassadorRepository {
   }
 
   Future<void> _getAmbassadors() async {
-    AmbassadorResponse ambassadorResponse = await _ambassadorService.getAmbassador(_authService.token!);
-    _ambassadors = _convertAmbassadors(ambassadorResponse.leaderboard);
+    AmbassadorResponseBody ambassadorResponseBody = await _ambassadorService.getAmbassador(_authService.token!);
+    _ambassadors = _convertAmbassadors(ambassadorResponseBody.leaderboard);
     pageCount = (_ambassadors.length / _ambassadorsPerPage).ceil();
     _ambassadorsRequested = true;
   }
@@ -55,11 +55,12 @@ class AmbassadorRepository {
     List<Ambassador> ambassadors = [];
     const int badgeLimit = 3;
     for (final (index, remoteAmbassador) in leaderboard.indexed) {
+      final int position = index + 1;
       Ambassador ambassador = Ambassador(
-        index + 1,
+        position,
         remoteAmbassador.name,
         remoteAmbassador.user_count,
-        badgeImage: (index < badgeLimit ? 'assets/images/badge_${index + 1}.png' : null),
+        badgeImage: (index < badgeLimit ? 'assets/images/badge_$position.png' : null),
       );
       ambassadors.add(ambassador);
     }
