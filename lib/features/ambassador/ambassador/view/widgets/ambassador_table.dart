@@ -1,5 +1,5 @@
 import 'package:diverzum_ambassador/features/ambassador/data/ambassador.dart';
-import 'package:diverzum_ambassador/shared/widgets/app_colors.dart';
+import 'package:diverzum_ambassador/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AmbassadorTable extends StatelessWidget {

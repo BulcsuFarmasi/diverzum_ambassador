@@ -6,4 +6,5 @@ part 'email_page_state.freezed.dart';
 sealed class EmailPageState with _$EmailPageState{
   factory EmailPageState.initial() = Initial;
   factory EmailPageState.success(String email) = Success;
+  factory EmailPageState.error(String email) = Error;
 }

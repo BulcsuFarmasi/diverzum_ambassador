@@ -25,6 +25,7 @@ class EmailPage extends ConsumerWidget {
     return switch (state) {
       Initial() => const EmailInitial(),
       Success success => EmailInitial(email: success.email,),
+      Error error => EmailInitial(email: error.email, emailNotExists: true)
     };
   }
 }

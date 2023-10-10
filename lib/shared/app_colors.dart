@@ -30,4 +30,9 @@ class AppColors {
   static const paginationBorderColor = Color(0xFFDEE2E6);
   static const paginationActiveBorderColor = Color(0xFF0D6EFD);
   static const tableShadowColor = Color(0xFF7A7A7D);
+  static const errorColor = Color(0xFFF9226F);
+  static const disabledButtonColor = Color(0xFFF6F8FB);
+  static const disabbledButtonTextColor = Color(0xFFC8CDD0);
+  static const disabbledButtonBorderColor = Color(0xFFE0E3E6);
+  static const buttonTextColor = Color(0xFFFFFFFF);
 }
