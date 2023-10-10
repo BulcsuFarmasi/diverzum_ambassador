@@ -26,6 +26,7 @@ class PasswordPage extends ConsumerWidget {
     final PasswordPageState passwordPageState = ref.watch(passwordPageStateNotifierProvider);
     return switch (passwordPageState) {
       Initial() => const PasswordInitial(),
+      Error error => PasswordInitial(password: error.password, loginFailed: true),
       _ => const SizedBox(),
     };
   }

@@ -20,8 +20,9 @@ class AuthService {
     return _authRemote.checkEmail(_email!);
   }
 
-  Future<void> login(String password) async {
+  Future<LoginResponse> login(String password) async {
     LoginResponse loginResponse = await _authRemote.login(_email!, password);
     _token = loginResponse.access_token;
+    return loginResponse;
   }
 }

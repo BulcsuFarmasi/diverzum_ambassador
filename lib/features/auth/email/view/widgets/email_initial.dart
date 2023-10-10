@@ -48,7 +48,7 @@ class _EmailInitialState extends ConsumerState<EmailInitial> {
     if (AppValidators.required(email)) {
       errorMessage = 'Kérjük adj meg egy e-mail címet';
     } else if (AppValidators.email(email!)) {
-      errorMessage = 'Kérjük érvényes e-mailet adj meg.';
+      errorMessage = 'Kérjük érvényes e-mail címet adj meg.';
     }
     return errorMessage;
   }
