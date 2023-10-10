@@ -1,6 +1,7 @@
 import 'package:diverzum_ambassador/features/ambassador/ambassador/controller/ambassador_page_state.dart';
 import 'package:diverzum_ambassador/features/ambassador/ambassador/model/ambassador_respository.dart';
 import 'package:diverzum_ambassador/features/ambassador/data/ambassador.dart';
+import 'package:diverzum_ambassador/shared/http/network_excpetion.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final StateNotifierProvider<AmbassadorPageStateNotifier, AmbassadorPageState> ambassadorPageStateNotifier =
@@ -14,8 +15,12 @@ class AmbassadorPageStateNotifier extends StateNotifier<AmbassadorPageState> {
   final AmbassadorRepository _ambassadorRepository;
 
   Future<void> loadPage(int page) async {
-    List<Ambassador> ambassadorsPerPage = await _ambassadorRepository.getAmbassadorPage(page);
+    try {
+      List<Ambassador> ambassadorsPerPage = await _ambassadorRepository.getAmbassadorPage(page);
 
-    state = AmbassadorPageState.pageLoadSuccess(ambassadorsPerPage, page, _ambassadorRepository.pageCount!);
+      state = AmbassadorPageState.pageLoadSuccess(ambassadorsPerPage, page, _ambassadorRepository.pageCount!);
+    } on NetworkException {
+      state = const AmbassadorPageState.pageLoadError();
+    }
   }
 }

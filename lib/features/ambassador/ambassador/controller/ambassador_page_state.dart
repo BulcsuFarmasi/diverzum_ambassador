@@ -7,5 +7,6 @@ part 'ambassador_page_state.freezed.dart';
 class AmbassadorPageState with _$AmbassadorPageState{
   const factory AmbassadorPageState.initial() = Initial;
   const factory AmbassadorPageState.pageLoadSuccess(List<Ambassador> ambassadors, int currentPage, int pageCount) = PageLoadSuccess;
+  const factory AmbassadorPageState.pageLoadError() = PageLoadError;
 
 }

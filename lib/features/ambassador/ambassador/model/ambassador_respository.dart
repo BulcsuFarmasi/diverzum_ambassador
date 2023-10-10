@@ -5,6 +5,7 @@ import 'package:diverzum_ambassador/features/ambassador/data/ambassador_response
 import 'package:diverzum_ambassador/features/ambassador/data/remote_ambassador.dart';
 import 'package:diverzum_ambassador/features/ambassador/services/ambassador_service.dart';
 import 'package:diverzum_ambassador/features/auth/services/auth_service.dart';
+import 'package:diverzum_ambassador/shared/http/network_excpetion.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final Provider<AmbassadorRepository> ambadassorRepositoryProvider = Provider<AmbassadorRepository>(
@@ -25,20 +26,23 @@ class AmbassadorRepository {
   int? pageCount;
 
   bool _ambassadorsRequested = false;
-  
+
   static const int _ambassadorsPerPage = 10;
-  
+
   Future<List<Ambassador>> getAmbassadorPage(int page) async {
     if (!_ambassadorsRequested) {
-      await _getAmbassadors();
+      try {
+        await _getAmbassadors();
+      } on NetworkException {
+        rethrow;
+      }
     }
-    
+
     final int pageStart = (page - 1) * 10;
     final int pageEnd = min(pageStart + _ambassadorsPerPage, _ambassadors.length);
-    
-    return _ambassadors.sublist(pageStart,  pageEnd);
+
+    return _ambassadors.sublist(pageStart, pageEnd);
   }
-  
 
   Future<void> _getAmbassadors() async {
     AmbassadorResponse ambassadorResponse = await _ambassadorService.getAmbassador(_authService.token!);
@@ -59,7 +63,7 @@ class AmbassadorRepository {
       );
       ambassadors.add(ambassador);
     }
-    
+
     return ambassadors;
   }
 }
