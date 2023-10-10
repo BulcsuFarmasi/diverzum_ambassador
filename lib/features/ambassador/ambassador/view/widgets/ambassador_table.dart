@@ -16,7 +16,7 @@ class AmbassadorTable extends StatelessWidget {
 
     return Table(
       columnWidths: const {
-        0: FixedColumnWidth(50),
+        0: FixedColumnWidth(48),
         1: FlexColumnWidth(),
         2: FixedColumnWidth(48),
       },

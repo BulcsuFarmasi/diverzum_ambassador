@@ -76,11 +76,10 @@ class _PasswordFormState extends ConsumerState<PasswordForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          const Stack(
             children: [
-              CustomBackButton(),
-              Expanded(
+              Positioned(top: -10, left: 0, child: CustomBackButton()),
+              Center(
                 child: Text(
                   'Lépj be',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: AppColors.titleColor),
