@@ -1,6 +1,8 @@
 import 'package:diverzum_ambassador/features/auth/data/login_exception.dart';
+import 'package:diverzum_ambassador/features/auth/data/password_error.dart';
 import 'package:diverzum_ambassador/features/auth/password/controller/password_page_state.dart';
 import 'package:diverzum_ambassador/features/auth/password/model/password_repository.dart';
+import 'package:diverzum_ambassador/shared/http/network_excpetion.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final StateNotifierProvider<PasswordPageStateNotifier, PasswordPageState> passwordPageStateNotifierProvider =
@@ -18,7 +20,10 @@ class PasswordPageStateNotifier extends StateNotifier<PasswordPageState> {
       await _passwordRepository.login(password);
       state = const PasswordPageState.success();
     } on LoginException  {
-      state = PasswordPageState.error(password);
+      state = PasswordPageState.error(password, PasswordError.passwordDoesntMatch);
+    } on NetworkException {
+      state = PasswordPageState.error(password, PasswordError.other);
     }
+
   }
 }

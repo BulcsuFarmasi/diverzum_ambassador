@@ -2,7 +2,6 @@ import 'package:diverzum_ambassador/features/auth/data/email_error.dart';
 import 'package:diverzum_ambassador/features/auth/email/controller/email_page_state_notifier.dart';
 import 'package:diverzum_ambassador/shared/app_colors.dart';
 import 'package:diverzum_ambassador/shared/app_validators.dart';
-import 'package:diverzum_ambassador/shared/widgets/auth_scaffold.dart';
 import 'package:diverzum_ambassador/shared/widgets/text_field_label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

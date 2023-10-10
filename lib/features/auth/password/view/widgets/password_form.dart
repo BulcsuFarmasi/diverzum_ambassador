@@ -1,7 +1,7 @@
+import 'package:diverzum_ambassador/features/auth/data/password_error.dart';
 import 'package:diverzum_ambassador/features/auth/password/controller/password_page_state_notifier.dart';
 import 'package:diverzum_ambassador/shared/app_colors.dart';
 import 'package:diverzum_ambassador/shared/app_validators.dart';
-import 'package:diverzum_ambassador/shared/widgets/auth_scaffold.dart';
 import 'package:diverzum_ambassador/shared/widgets/custom_back_button.dart';
 import 'package:diverzum_ambassador/shared/widgets/text_field_label.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +11,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class PasswordForm extends ConsumerStatefulWidget {
   const PasswordForm({
     this.password,
-    this.loginFailed,
+    this.error,
     super.key,
   });
 
   final String? password;
-  final bool? loginFailed;
+  final PasswordError? error;
 
   @override
   ConsumerState<PasswordForm> createState() => _PasswordFormState();
@@ -27,7 +27,13 @@ class _PasswordFormState extends ConsumerState<PasswordForm> {
   bool _passwordVisible = false;
   bool _formValid = false;
   String? _password;
-  bool? _loginFailed;
+  PasswordError? _error;
+
+  String? get _errorMessage => switch (_error) {
+    PasswordError.passwordDoesntMatch => 'Az e-mail cím vagy jelszó nem jó',
+    PasswordError.other => 'Hiba történt, kérjük próbálkozz később',
+    null => null,
+  };
 
   void _changePasswordVisibility() {
     setState(() {
@@ -43,11 +49,11 @@ class _PasswordFormState extends ConsumerState<PasswordForm> {
   void didUpdateWidget(covariant PasswordForm oldWidget) {
     super.didUpdateWidget(oldWidget);
     _password = widget.password;
-    _loginFailed = widget.loginFailed;
+    _error = widget.error;
   }
 
   void _changePassword(String? newPassword) {
-    _loginFailed = null;
+    _error = null;
     setState(() {
       _validateForm();
       _password = newPassword;
@@ -118,12 +124,12 @@ class _PasswordFormState extends ConsumerState<PasswordForm> {
                 ),
               ),
               prefixIconColor: (_password?.isNotEmpty ?? false)
-                  ? (!_formValid || (_loginFailed ?? false) ? AppColors.errorColor : AppColors.primaryColor)
+                  ? (!_formValid || (_error != null) ? AppColors.errorColor : AppColors.primaryColor)
                   : AppColors.textColor,
               suffixIconColor: (_password?.isNotEmpty ?? false)
-                  ? ((!_formValid || (_loginFailed ?? false)) ? AppColors.errorColor : AppColors.primaryColor)
+                  ? ((!_formValid || (_error != null)) ? AppColors.errorColor : AppColors.primaryColor)
                   : AppColors.textColor,
-              errorText: _loginFailed ?? false ? 'Az e-mail vagy a  jelszó nem jó' : null,
+              errorText: _error != null ? _errorMessage : null,
               contentPadding: EdgeInsets.zero,
             ),
             onChanged: _changePassword,

@@ -29,7 +29,7 @@ class PasswordPage extends ConsumerWidget {
       body: SingleChildScrollView(
         child: switch (passwordPageState) {
           Initial() => const PasswordForm(),
-          Error error => PasswordForm(password: error.password, loginFailed: true),
+          Error error => PasswordForm(password: error.password, error: error.error),
           _ => const SizedBox(),
         },
       ),

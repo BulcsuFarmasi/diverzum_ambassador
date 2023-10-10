@@ -28,12 +28,12 @@ class AuthRemote {
     final LoginRequest loginRequest = LoginRequest(email, password);
     http.Response response = await http.post(Uri.parse('$url/login'), body: loginRequest.toJson());
 
-    if (response.statusCode == 200) {
+    if (const [200, 401].contains(response.statusCode)) {
       return LoginResponse.fromJson(json.decode(response.body));
     } else {
       throw NetworkException();
     }
 
-;
+
   }
 }
