@@ -1,5 +1,6 @@
 import 'package:diverzum_ambassador/features/ambassador/ambassador/controller/ambassador_page_state.dart';
 import 'package:diverzum_ambassador/features/ambassador/ambassador/controller/ambassador_page_state_notifier.dart';
+import 'package:diverzum_ambassador/features/ambassador/ambassador/view/widgets/ambassador_page_load_error.dart';
 import 'package:diverzum_ambassador/features/ambassador/ambassador/view/widgets/ambassador_page_load_success.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -66,6 +67,7 @@ class _AmbassadorPageState extends ConsumerState<AmbassadorPage> {
                 currentPage: pageLoadSuccess.currentPage,
                 pageCount: pageLoadSuccess.pageCount,
               ),
+            PageLoadError() => const AmbassadorPageLoadError(),
             _ => const SizedBox()
           },
         ),
